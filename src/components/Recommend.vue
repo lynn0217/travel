@@ -1,10 +1,9 @@
 <template>
   <div>
     <div class="title">热销推荐</div>
-    <ul v-for="item of recommendList" :key="item.id">
+    <ul v-for="item of list" :key="item.id">
       <li class="item border-bottom">
-        <img class="item-img" :src="item.imgURL" />
-
+        <img class="item-img" :src="item.imgUrl" />
         <div class="item-info">
           <p class="item-title">{{item.title}}</p>
           <p class="item-desc">{{item.desc}}</p>
@@ -18,38 +17,11 @@
 <script>
 export default {
   name: 'HomeRecommend',
+  props: {
+    list: Array
+  },
   data() {
-    return {
-      recommendList: [
-        {
-          id: '0001',
-          imgURL: 'https://imgs.qunarzz.com/p/p67/1512/a2/0ebfcd965b9391f7.jpg',
-          title: '三亚自由行',
-          desc: '洲际品牌三亚湾皇冠假日'
-        },
-        {
-          id: '0002',
-          imgURL:
-            'https://imgs.qunarzz.com/vs_ceph_b2c_001/379fa552-b68b-438c-863d-a8c38265066e.jpg',
-          title: '三亚自由行',
-          desc: '洲际品牌三亚湾皇冠假日'
-        },
-        {
-          id: '0003',
-          imgURL:
-            'https://imgs.qunarzz.com/vs_ceph_vs_tts/9e81fcbe-ff03-4a99-b51b-3065f5857ee5.jpg',
-          title: '三亚自由行',
-          desc: '洲际品牌三亚湾皇冠假日'
-        },
-        {
-          id: '0004',
-          imgURL:
-            'https://imgs.qunarzz.com/vs_ceph_vs_tts/8a16c989-8206-4ab5-8d54-7dd02fed5203.jpg',
-          title: '三亚自由行',
-          desc: '洲际品牌三亚湾皇冠假日'
-        }
-      ]
-    }
+    return {}
   }
 }
 </script>

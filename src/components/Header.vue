@@ -8,7 +8,7 @@
       输入城市/景点/游玩主题
     </div>
     <div class="header-right">
-      城市
+      {{this.city}}
       <span class="iconfont arrow-icon">&#xe64a;</span>
     </div>
   </div>
@@ -18,6 +18,9 @@
 export default {
   data() {
     return {}
+  },
+  props: {
+    city: String
   }
 }
 </script>
