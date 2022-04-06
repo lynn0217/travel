@@ -8,12 +8,12 @@ const routes = [
     path: '/',
     name: 'main',
     component: () => import( '../views/Main.vue')
+  },
+  {
+    path: '/city',
+    name: 'City',
+    component: () => import( '../components/city/City.vue')
   }
-  // {
-  //   path: '/about',
-  //   name: 'About',
-  //   component: () => import( '../views/About.vue')
-  // }
 ]
 
 const router = new VueRouter({
