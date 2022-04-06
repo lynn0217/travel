@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul class="list">
-      <li class="item" v-for="(item,key) of cities" :key="key">{{key}}</li>
+      <li class="item" v-for="(item,key) of cities" :key="key" @click="handlePosi">{{key}}</li>
     </ul>
   </div>
 </template>
@@ -13,7 +13,14 @@ export default {
     cities: Object
   },
   data() {
-    return {}
+    return {
+      touchStatus: false
+    }
+  },
+  methods: {
+    handlePosi(e) {
+      this.$emit('change', e.target.innerText)
+    }
   }
 }
 </script>

@@ -20,6 +20,8 @@ module.exports = {
     'no-unused-vars' : 'off',
     'space-before-function-paren' : 0,
     'camelcase': 'off',
-    'space-in-parens': 0
+    'space-in-parens': 0,
+    "prefer-const": "off"
+  
   }
 }

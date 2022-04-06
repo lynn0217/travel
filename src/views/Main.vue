@@ -1,6 +1,6 @@
 <template>
   <div>
-    <HomeHeader :city="city"></HomeHeader>
+    <HomeHeader></HomeHeader>
     <HomeSwiper :list="swiperList"></HomeSwiper>
     <HomeIcons :list="iconList"></HomeIcons>
     <HomeRecommend :list="recommendList"></HomeRecommend>
@@ -18,7 +18,7 @@ import axios from 'axios'
 export default {
   data() {
     return {
-      city: '',
+      lastCity: '',
       swiperList: [],
       iconList: [],
       recommendList: [],
@@ -32,25 +32,16 @@ export default {
     HomeRecommend,
     HomeWeekend
   },
-  mounted() {
-    this.getHomeInfo()
-  },
+
   methods: {
     getHomeInfo() {
-      axios.get('/api/city.json').then(this.getHomeInfoSucc)
+      axios.get('/api/city.json?city' + this.city).then(this.getHomeInfoSucc)
       axios.get('/api/index.json').then(this.getHomeInfoSwiperList)
       axios.get('/api/index.json').then(this.getHomeIcon)
       axios.get('/api/index.json').then(this.getHomeRecList)
       axios.get('/api/index.json').then(this.getPicList)
     },
-    getHomeInfoSucc(res) {
-      res = res.data
-      if (res.ret && res.data) {
-        const data = res.data
-        this.city = data.city
-      }
-      // console.log(res)
-    },
+
     getHomeInfoSwiperList(res) {
       res = res.data
       if (res.ret && res.data) {
@@ -81,6 +72,16 @@ export default {
         const data = res.data
         this.weekendList = data.weekendList
       }
+    }
+  },
+  mounted() {
+    this.lastCity = this.city
+    this.getHomeInfo()
+  },
+  activated() {
+    if (this.lastCity !== this.city) {
+      this.lastCity = this.city
+      this.getHomeInfo()
     }
   }
 }
