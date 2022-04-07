@@ -2,14 +2,16 @@
   <div>
     <div class="title">热销推荐</div>
     <ul v-for="item of list" :key="item.id">
-      <li class="item border-bottom">
-        <img class="item-img" :src="item.imgUrl" />
-        <div class="item-info">
-          <p class="item-title">{{item.title}}</p>
-          <p class="item-desc">{{item.desc}}</p>
-          <button class="item-btn">查看详情</button>
-        </div>
-      </li>
+      <router-link :to="'/detail/' + item.id">
+        <li class="item border-bottom">
+          <img class="item-img" :src="item.imgUrl" />
+          <div class="item-info">
+            <p class="item-title">{{item.title}}</p>
+            <p class="item-desc">{{item.desc}}</p>
+            <button class="item-btn">查看详情</button>
+          </div>
+        </li>
+      </router-link>
     </ul>
   </div>
 </template>
@@ -27,7 +29,7 @@ export default {
 </script>
 
 <style lang='stylus' scoped>
-@import '../assets/styles/mixins.styl';
+@import '../../assets/styles/mixins.styl';
 
 .title {
   margin-top: 0.2rem;
@@ -40,6 +42,7 @@ export default {
   overflow: hidden;
   display: flex;
   height: 1.9rem;
+  color: black;
 
   .item-img {
     width: 1.7rem;
